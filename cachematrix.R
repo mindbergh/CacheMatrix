@@ -1,10 +1,17 @@
-## Put comments here that give an overall description of what your
-## functions do
+############################################################################################
+## Function makeCacheMatrix creates a special "matrix" object that can cache its inverse.
+##
+## Function cacheSolve computes the inverse of the special "matrix" returned by 
+## makeCacheMatrix above. If the inverse has already been calculated then the cachesolve 
+## retrieve the inverse from the cache.
+##
+## Author: Ming FANG
+## https://github.com/mindbergh/
+## April 19 2014
+############################################################################################
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-		## Return a list of functions that implement cached matrix
+## Return a list of functions that implement cached matrix
+makeCacheMatrix <- function(x = matrix()) {		
 		i <- NULL   
 		set <- function(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) {
 			## the parameters are the same as build-in function matrix()
@@ -20,10 +27,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## Return a matrix that is the inverse of 'x', if no cached data found, compute and cache it
+## if cached data found, just return cache data
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(x, ...) {        
 		i <- x$getsolve()
 		if(!is.null(i)) {
 				## if i is not NULL, it means that we have a cached solve, just return it
